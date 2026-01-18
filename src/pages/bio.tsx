@@ -1,3 +1,9 @@
 export default function Bio() {
-  return <div>bio</div>;
+  return (
+    <section className="bg-black w-full min-h-screen">
+      <div>
+        <h1>bio </h1>
+      </div>
+    </section>
+  );
 }
