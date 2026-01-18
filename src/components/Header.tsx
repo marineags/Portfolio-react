@@ -3,8 +3,8 @@ import { NavLink } from "react-router-dom";
 function Header() {
   const linkBase =
     "px-4 py-2 rounded-full text-sm transition whitespace-nowrap";
-  const linkActive = "text-white bg-white/15";
-  const linkIdle = "text-white/80 hover:text-white hover:bg-white/10";
+  const linkActive = "text-white bg-[#3FD66B]/20";
+  const linkIdle = "text-white/80 hover:text-white hover:bg-[#3FD66B]/10";
 
   return (
     <header className="sticky top-4 z-50">
@@ -13,7 +13,7 @@ function Header() {
         <div className="flex items-center justify-between rounded-full border border-white/15 bg-oklch(55.1% 0.027 264.364) backdrop-blur-xl px-3 py-2 shadow-lg">
           {/* Left (logo / titre) */}
           <div className="hidden sm:block pl-2 text-sm font-semibold tracking-wide text-white/90">
-            Portfolio - Marine
+            Portfolio
           </div>
 
           {/* Center nav */}

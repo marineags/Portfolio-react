@@ -45,9 +45,9 @@ export default function Home() {
           <NavLink to="/bio">
             <button
               className="w-fit px-5 py-3 rounded-full
-        bg-white/15 text-white font-semibold
+        bg-white/15 text-gray-400 font-semibold
          backdrop-blur
-        hover:bg-[#3FD66B]/25 transition
+        hover:bg-[#3FD66B]/25  transition
       "
             >
               Bio
