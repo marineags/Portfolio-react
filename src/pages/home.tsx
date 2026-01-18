@@ -57,30 +57,29 @@ export default function Home() {
             {/* Tooltip */}
             <div
               className="
-      absolute bottom-14 right-0
-      w-72 h-80
-      rounded-2xl
-      bg-white/30 backdrop-blur-md
-      p-4
-      opacity-0 translate-y-2 scale-95
-      transition-all duration-200
-      group-hover:opacity-100 group-hover:translate-y-0 group-hover:scale-100
-      pointer-events-none
-      shadow-xl
-      overflow-hidden
-    "
+  absolute bottom-14 right-0
+  w-72 h-80
+  rounded-2xl
+  bg-white/20 backdrop-blur-md
+  
+  p-4
+  opacity-0 translate-y-2 scale-95
+  transition-all duration-200
+  group-hover:opacity-35 group-hover:translate-y-0 group-hover:scale-100
+  pointer-events-none
+  shadow-xl
+  overflow-hidden
+"
             >
               {/* Titre */}
-              <p className="text-white text-sm mb-3">
-                Curriculum vitae: Marine Agasse
-              </p>
+              <p className="text-white text-sm mb-3">Curriculum vitae</p>
 
               {/* Preview */}
               <div className="h-[260px] w-full flex justify-center items-center bg-white/20 rounded-md overflow-hidden">
                 <img
                   src="/Marine-Agasse-CV.pdf"
                   alt="Aperçu CV"
-                  className="w-full h-full object-contain block"
+                  className="w-full h-full object-contain "
                 />
               </div>
             </div>
