@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 export default function Home() {
   return (
     <section className="fixed inset-0 overflow-hidden">
-      {/* Vidéo background */}
+      {/*fond de page video*/}
       <video
         className="absolute scale-110  inset-0 h-full w-full object-cover"
         autoPlay
@@ -15,13 +15,13 @@ export default function Home() {
         <source src="/hero.mp4" type="video/mp4" />
       </video>
 
-      {/* Overlay pour lisibilité */}
+      {/* filtre video */}
       <div className="absolute inset-0 bg-black/85" />
 
       {/* Contenu */}
       <div className="relative flex h-full justify-start p-20">
         <div className="text-white pt-40 flex flex-col gap-6">
-          {/* H1 */}
+          {/* titre */}
           <h1 className="text-8xl font-['Audiowide']">
             M
             <span className="text-[#3FD66B] drop-shadow-[0_0_12px_#3FD66B]">
@@ -38,10 +38,10 @@ export default function Home() {
             sse
           </h1>
 
-          {/* Texte */}
+          {/* Texte en dessous du titre */}
           <p className="text-lg opacity-90">Développeuse Junior</p>
 
-          {/* Bouton */}
+          {/* Bouton vers la bio */}
           <NavLink to="/bio">
             <button
               className="w-fit px-5 py-3 rounded-full
@@ -54,7 +54,7 @@ export default function Home() {
             </button>
           </NavLink>
           <div className="fixed bottom-15 right-20 group z-50">
-            {/* Tooltip */}
+            {/* Tooltip pour le cv*/}
             <div
               className="
   absolute bottom-14 right-0
