@@ -11,3 +11,28 @@ body,
 body {
   font-family: "Poppins", sans-serif;
 }
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Couleur du texte des mois (Sep, Oct, ...) */
+.ghCal .react-activity-calendar__legend-month text {
+  fill: #efd3d6;
+}
+
+/* Couleur du texte des jours (Mon/Wed/Fri) si tu veux aussi */
+.ghCal .react-activity-calendar__legend-weekday text {
+  fill: #efd3d6;
+}
+
+/* Texte "xxx contributions in the last year" */
+.ghCal .react-activity-calendar__legend text {
+  fill: #efd3d6;
+  font-size: 12px;
+}
+
+/* Texte Less / More */
+.ghCal .react-activity-calendar__legend-colors text {
+  fill: #efd3d6;
+}

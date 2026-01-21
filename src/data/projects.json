@@ -1,0 +1,44 @@
+[
+  {
+    "name": "Quizz",
+    "description": "Jeu de quiz interactif",
+    "language": "JavaScript",
+    "url": "https://github.com/marineags/Quizz"
+  },
+  {
+    "name": "Guess-a-number",
+    "description": "Jeu de devinette en JS",
+    "language": "JavaScript",
+    "url": "https://github.com/marineags/Guess-a-number"
+  },
+  {
+    "name": "Portfolio",
+    "description": "Portfolio React + Tailwind",
+    "language": "TypeScript",
+    "url": "https://github.com/marineags/portfolio"
+  },
+  {
+    "name": "Flexbox exercise",
+    "description": "Exercice CSS Flexbox",
+    "language": "CSS",
+    "url": "https://github.com/marineags/Exercice-1-Produire-un-affichage-en-flexbox"
+  },
+  {
+    "name": "Flexbox exercise",
+    "description": "Exercice CSS Flexbox",
+    "language": "CSS",
+    "url": "https://github.com/marineags/Exercice-1-Produire-un-affichage-en-flexbox"
+  },
+  {
+    "name": "Flexbox exercise",
+    "description": "Exercice CSS Flexbox",
+    "language": "CSS",
+    "url": "https://github.com/marineags/Exercice-1-Produire-un-affichage-en-flexbox"
+  },
+  {
+    "name": "Flexbox exercise",
+    "description": "Exercice CSS Flexbox",
+    "language": "CSS",
+    "url": "https://github.com/marineags/Exercice-1-Produire-un-affichage-en-flexbox"
+  }
+]
