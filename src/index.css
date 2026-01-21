@@ -36,3 +36,20 @@ html {
 .ghCal .react-activity-calendar__legend-colors text {
   fill: #efd3d6;
 }
+/* Scrollbar pour Chrome, Edge, Safari */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #12080e; /* fond de la scrollbar */
+}
+
+::-webkit-scrollbar-thumb {
+  background: #d56b77; /* couleur du "bouton" */
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #e3b8be; /* couleur au hover */
+}

@@ -67,14 +67,14 @@ export default function App() {
         <h2 className="text-4xl font-bold mb-10">À propos</h2>
         <div className="h-[500px] rounded-xl  backdrop-blur">
           <div>
-            <img className="h-30 " src="/profil/IMG_5854.heic" />
+            <img className="h-100 rounded-xl " src="/profil/IMG_5854.heic" />
             <p>text</p>
           </div>
-          <div className="">
-            <img className="h-16" src="/icons/html.png" />
-            <img className="h-16" src="/icons/css.png" />
-            <img className="h-16" src="/icons/javascript.png" />
-            <img className="h-16" src="/icons/react.png" />
+          <div className="flex flex-row rounded-xl w-100 gap-5 bg-[#D56B77]/25 p-5 ">
+            <img className="h-20" src="/icons/html.png" />
+            <img className="h-20" src="/icons/css.png" />
+            <img className="h-20" src="/icons/javascript.png" />
+            <img className="h-20" src="/icons/react.png" />
           </div>
         </div>
       </section>
