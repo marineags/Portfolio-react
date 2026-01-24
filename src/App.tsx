@@ -8,6 +8,7 @@ import BandScene from "./components/BandScene";
 const translations = {
   fr: {
     juniorDev: "Développeuse Junior",
+    bioBtn: "Bio",
     aboutTitle: "À propos",
     projectsTitle: "Projets",
     githubProjectsTitle: "Mes projets GitHub",
@@ -24,6 +25,7 @@ const translations = {
   },
   en: {
     juniorDev: "Junior Developer",
+    bioBtn: "About",
     aboutTitle: "About",
     projectsTitle: "Projects",
     githubProjectsTitle: "My GitHub projects",
@@ -41,28 +43,35 @@ const translations = {
 } as const;
 
 type Lang = keyof typeof translations;
+
 export default function App() {
   const [lang, setLang] = useState<Lang>("fr");
   const t = useMemo(() => translations[lang], [lang]);
+
   return (
     <div className="bg-black text-white">
       <Header lang={lang} setLang={setLang} />
 
       {/* HOME -------------------------------------------------- */}
       <section id="home" className="relative min-h-screen overflow-hidden">
-        {/* 3D en fond */}
-        <div className="absolute inset-0 z-0">
+        {/* Desktop: 3D en fond | Mobile: pas de 3D */}
+        <div className="absolute inset-0 z-0 hidden sm:block">
           <BandScene />
         </div>
 
+        {/* Mobile fallback: fond harmonieux */}
+        <div className="absolute inset-0 z-0 sm:hidden bg-black" />
+
         {/* Overlay sombre (ne bloque pas la souris) */}
-        {/* Overlay sombre */}
         <div className="absolute inset-0 z-10 bg-black/50 pointer-events-none" />
 
-        {/* Contenu (laisse passer la souris sauf sur les éléments cliquables) */}
-        <div className="relative z-20 min-h-screen flex items-start p-20 pointer-events-none">
-          <div className="pt-45 text-white flex flex-col gap-6 ">
-            <h1 className="text-8xl font-['Audiowide'] leading-none">
+        {/* Contenu
+            Desktop = identique (p-20, texte très grand)
+            Mobile = layout harmonieux (centré, padding plus petit)
+        */}
+        <div className="relative z-20 min-h-screen pointer-events-none flex items-center sm:items-start px-6 py-24 sm:p-20">
+          <div className="w-full sm:w-auto text-white flex flex-col gap-6 sm:pt-45">
+            <h1 className="font-['Audiowide'] leading-none text-5xl sm:text-8xl">
               M
               <span className="text-[#656d4a] drop-shadow-[0_0_10px_#656d4a]">
                 a
@@ -78,32 +87,42 @@ export default function App() {
               sse
             </h1>
 
-            <p className="text-lg opacity-90">{t.juniorDev}</p>
+            <p className="text-base sm:text-lg opacity-90">{t.juniorDev}</p>
 
             {/* Bio -> cliquable */}
             <a href="#about" className="pointer-events-auto w-fit">
               <button className="w-fit px-5 py-3 rounded-full bg-white/15 text-gray-200 font-semibold backdrop-blur hover:bg-[#CCD5AE]/25 transition">
-                Bio
+                {t.bioBtn}
               </button>
             </a>
+
+            {/* CV bouton sur mobile (parce que le floating peut gêner/être masqué) */}
+            <div className="pointer-events-auto sm:hidden">
+              <a href="/Marine-Agasse-CV.pdf" target="_blank" rel="noreferrer">
+                <button className="w-fit px-5 py-3 rounded-full bg-white/10 text-gray-200 font-semibold backdrop-blur hover:bg-white/15 transition border border-white/10">
+                  CV
+                </button>
+              </a>
+            </div>
           </div>
         </div>
 
-        {/* CV (fixed au-dessus, cliquable) */}
-        <div className="fixed bottom-14 right-20 z-50 group pointer-events-auto">
+        {/* CV (floating) — Desktop uniquement */}
+        <div className="hidden sm:block fixed bottom-14 right-20 z-50 group pointer-events-auto">
           {/* Aperçu au hover */}
           <div
             className="absolute bottom-14 right-0 w-72 h-80 rounded-2xl bg-white/20 backdrop-blur-md p-4
-    opacity-0 translate-y-2 scale-95 transition-all duration-200
-    group-hover:opacity-35 group-hover:translate-y-0 group-hover:scale-100
-    pointer-events-none shadow-xl overflow-hidden"
+            opacity-0 translate-y-2 scale-95 transition-all duration-200
+            group-hover:opacity-35 group-hover:translate-y-0 group-hover:scale-100
+            pointer-events-none shadow-xl overflow-hidden"
           >
-            <p className="text-white text-sm mb-3">Curriculum vitae</p>
+            <p className="text-white text-sm mb-3">{t.cvLabel}</p>
 
             <div className="h-[260px] w-full bg-white/20 rounded-md overflow-hidden">
+              {/* Note: pour un vrai aperçu, utilise une image (png/jpg) exportée de ton CV */}
               <img
-                src="public/Marine-Agasse-CV.pdf"
-                alt="Aperçu CV"
+                src="/Marine-Agasse-CV.pdf"
+                alt={t.cvPreviewAlt}
                 draggable="false"
                 className="w-full h-full object-cover pointer-events-none select-none"
               />
@@ -118,39 +137,40 @@ export default function App() {
           </a>
         </div>
 
-        {/* Transition floue vers la section suivante */}
+        {/* Transition floue */}
         <div className="absolute bottom-0 left-0 w-full h-20 bg-gradient-to-b from-transparent to-black pointer-events-none z-20" />
       </section>
 
-      {/* Projets ------------------------------------------------------*/}
-      <section id="about" className="min-h-screen px-20 py-28">
-        <h2 className="text-4xl font-bold mb-14 text-white">{t.aboutTitle}</h2>
+      {/* BIO ------------------------------------------------------ */}
+      <section id="about" className="min-h-screen px-6 py-20 sm:px-20 sm:py-28">
+        <h2 className="text-3xl sm:text-4xl font-bold mb-10 sm:mb-14 text-white">
+          {t.aboutTitle}
+        </h2>
 
-        <div className="max-w-6xl pt-9 mx-auto grid grid-cols-1 md:grid-cols-[260px_1fr] gap-10 items-start">
-          {/* Photo (gauche) */}
+        <div className="max-w-6xl pt-2 sm:pt-9 mx-auto grid grid-cols-1 md:grid-cols-[260px_1fr] gap-8 sm:gap-10 items-start">
+          {/* Photo */}
           <div className="bg-white/5 border border-white/10 rounded-2xl p-4 backdrop-blur-md shadow-xl">
             <img
-              src="public/profil/IMG_5854.heic"
-              alt="Marine"
-              className="h-89 w-full object-cover rounded-2xl"
+              src="/profil/IMG_5854.heic"
+              alt={t.profileAlt}
+              className="h-72 sm:h-89 w-full object-cover rounded-2xl"
             />
           </div>
 
           {/* Colonne droite */}
-          <div className="grid grid-rows-[auto_auto] gap-10">
-            {/* Texte long (en haut) */}
-            <div className="bg-white/5 border border-white/10 rounded-2xl p-8 backdrop-blur-md shadow-xl">
-              <p className="text-[#EFD3D6] leading-relaxed text-lg">
+          <div className="grid grid-rows-[auto_auto] gap-8 sm:gap-10">
+            {/* Texte long */}
+            <div className="bg-white/5 border border-white/10 rounded-2xl p-6 sm:p-8 backdrop-blur-md shadow-xl">
+              <p className="text-[#EFD3D6] leading-relaxed text-base sm:text-lg">
                 {t.aboutText}
               </p>
             </div>
 
-            {/* Ligne du bas : Stack + Coéquipier */}
-            <div className="grid grid-cols-1 md:grid-cols-[1fr_320px] gap-10">
-              {/* Stack (plus large) */}
-              {/* Stack (alignée proprement) */}
-              <div className="bg-white/5 border border-white/10 rounded-2xl px-10 py-8 backdrop-blur-md shadow-xl min-h-[160px] flex items-center justify-center">
-                <div className="grid grid-cols-5 gap-6 place-items-center">
+            {/* Stack + Coéquipier */}
+            <div className="grid grid-cols-1 md:grid-cols-[1fr_320px] gap-8 sm:gap-10">
+              {/* Stack */}
+              <div className="bg-white/5 border border-white/10 rounded-2xl px-6 sm:px-10 py-8 backdrop-blur-md shadow-xl min-h-[160px] flex items-center justify-center">
+                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-6 place-items-center w-full">
                   <div className="flex flex-col items-center gap-2">
                     <img src="/icons/html.png" className="h-12" alt="HTML" />
                     <span className="text-sm text-[#EFD3D6]">HTML</span>
@@ -182,8 +202,8 @@ export default function App() {
                 </div>
               </div>
 
-              {/* Coéquipier (plus petit) */}
-              <div className="bg-white/5 border border-white/10 rounded-2xl px-8 py-8 backdrop-blur-md shadow-xl">
+              {/* Coéquipier */}
+              <div className="bg-white/5 border border-white/10 rounded-2xl px-6 sm:px-8 py-8 backdrop-blur-md shadow-xl">
                 <p className="text-xs uppercase tracking-wider text-[#656d4a] mb-3">
                   {t.teammateLabel}
                 </p>
@@ -201,17 +221,20 @@ export default function App() {
         </div>
       </section>
 
-      {/* ABOUT ---------------------------------------------------------- */}
-      <section id="projects" className="min-h-screen p-20">
-        <h2 className="text-4xl font-bold mb-10">{t.projectsTitle}</h2>
+      {/* PROJECTS ---------------------------------------------------------- */}
+      <section id="projects" className="min-h-screen px-6 py-20 sm:p-20">
+        <h2 className="text-3xl sm:text-4xl font-bold mb-8 sm:mb-10">
+          {t.projectsTitle}
+        </h2>
 
-        <div className="rounded-2xl bg-black/70 backdrop-blur-xl border border-white/10 shadow-xl p-6 mb-12">
-          <h3 className="text-xl font-semibold text-[#E9EDC9] mb-4">
+        {/* Repos (un peu plus large sur mobile) */}
+        <div className="rounded-2xl bg-black/70 backdrop-blur-xl border border-white/10 shadow-xl p-2 sm: mb-7">
+          <h3 className="text-lg sm:text-xl font-semibold text-[#E9EDC9] mb-2">
             {t.githubProjectsTitle}
           </h3>
 
-          <div className="max-h-[240px] overflow-y-auto pr-2">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="max-h-[260px] sm:max-h-[240px] overflow-y-auto pr-2">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
               {projects.map((project) => (
                 <RepoCard
                   key={project.url}
@@ -225,19 +248,31 @@ export default function App() {
           </div>
         </div>
 
-        <ContributionsLikeGitHub username="marineags" />
+        {/* Calendrier GitHub : élargi + swipe au doigt + scrollbar cachée */}
+        <div className="rounded-2xl bg-black/70 backdrop-blur-xl border border-white/10 shadow-xl p-4 ">
+          <div
+            className="overflow-x-auto overflow-y-hidden touch-pan-x scroll-smooth no-scrollbar"
+            style={{ WebkitOverflowScrolling: "touch" }}
+          >
+            {/* min-width force le swipe sur mobile, mais desktop reste normal */}
+            <div className="min-w-[760px] md:min-w-0">
+              <ContributionsLikeGitHub username="marineags" />
+            </div>
+          </div>
+        </div>
       </section>
 
-      {/* CONTACT ---------------------------------------------------------------*/}
+      {/* CONTACT --------------------------------------------------------------- */}
       <section
         id="contact"
-        className="relative min-h-screen px-20 py-28 overflow-hidden"
+        className="relative min-h-screen px-6 py-20 sm:px-20 sm:py-28 overflow-hidden"
       >
-        <h2 className="text-4xl font-bold mb-14 text-white">
+        <h2 className="text-3xl sm:text-4xl font-bold mb-10 sm:mb-14 text-white">
           {t.contactTitle}
         </h2>
 
-        <div className="relative z-10 flex flex-wrap justify-center gap-6">
+        {/* mobile: grille / desktop: reste propre */}
+        <div className="relative z-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {/* LinkedIn */}
           <a
             href="https://www.linkedin.com/in/marine-agasse-346886292/"
@@ -245,7 +280,7 @@ export default function App() {
             rel="noreferrer"
             className="group"
           >
-            <div className="shadow-xl rounded-xl p-8 w-56 flex flex-col items-center bg-white/5 border border-white/10 hover:bg-white/10 transition">
+            <div className="shadow-xl rounded-xl p-6 sm:p-8 w-full flex flex-col items-center bg-white/5 border border-white/10 hover:bg-white/10 transition">
               <img
                 src="/icons/icons8-linkedin-50.png"
                 alt="LinkedIn"
@@ -264,7 +299,7 @@ export default function App() {
             rel="noreferrer"
             className="group"
           >
-            <div className="shadow-xl rounded-xl p-8 w-56 flex flex-col items-center bg-white/5 border border-white/10 hover:bg-white/10 transition">
+            <div className="shadow-xl rounded-xl p-6 sm:p-8 w-full flex flex-col items-center bg-white/5 border border-white/10 hover:bg-white/10 transition">
               <img
                 src="/icons/icons8-github-50.png"
                 alt="GitHub"
@@ -278,7 +313,7 @@ export default function App() {
 
           {/* Email */}
           <a href="mailto:agsmarine23@gmail.com" className="group">
-            <div className="shadow-xl rounded-xl p-8 w-56 flex flex-col items-center bg-white/5 border border-white/10 hover:bg-white/10 transition">
+            <div className="shadow-xl rounded-xl p-6 sm:p-8 w-full flex flex-col items-center bg-white/5 border border-white/10 hover:bg-white/10 transition">
               <img
                 src="/icons/icons8-mail-48.png"
                 alt="Email"
@@ -292,7 +327,7 @@ export default function App() {
 
           {/* Téléphone */}
           <a href="tel:+33638829826" className="group">
-            <div className="shadow-xl rounded-xl p-8 w-56 flex flex-col items-center bg-white/5 border border-white/10 hover:bg-white/10 transition">
+            <div className="shadow-xl rounded-xl p-6 sm:p-8 w-full flex flex-col items-center bg-white/5 border border-white/10 hover:bg-white/10 transition">
               <img
                 src="/icons/icons8-telephone-50.png"
                 alt="Téléphone"
@@ -305,12 +340,10 @@ export default function App() {
           </a>
         </div>
 
-        {/* Footer minimal */}
-        <footer className="relative z-10 mt-70 border-t border-white/10 py-10 text-center text-[#E9EDC9]/30 text-sm">
+        {/* Footer */}
+        <footer className="relative z-10 mt-16 sm:mt-70 border-t border-white/10 py-10 text-center text-[#E9EDC9]/30 text-sm">
           © {new Date().getFullYear()} Marine Agasse
         </footer>
-
-        {/* Fondu bas de page (dans la section) */}
       </section>
     </div>
   );
