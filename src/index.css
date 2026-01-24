@@ -1,10 +1,19 @@
+/* Base claire : #E9EDC9
+Vert olive : #656D4A */
+
 @import "tailwindcss";
+
+/* =====================
+   Base globale
+===================== */
 
 html,
 body,
 #root {
+  width: 100%;
   height: 100%;
   margin: 0;
+  padding: 0;
   background: #000;
 }
 
@@ -16,57 +25,52 @@ html {
   scroll-behavior: smooth;
 }
 
-/* Couleur du texte des mois (Sep, Oct, ...) */
-.ghCal .react-activity-calendar__legend-month text {
-  fill: #efd3d6;
+* {
+  box-sizing: border-box;
 }
 
-/* Couleur du texte des jours (Mon/Wed/Fri) si tu veux aussi */
-.ghCal .react-activity-calendar__legend-weekday text {
-  fill: #efd3d6;
+canvas {
+  display: block;
 }
 
-/* Texte "xxx contributions in the last year" */
-.ghCal .react-activity-calendar__legend text {
-  fill: #efd3d6;
-  font-size: 12px;
+/* =====================
+   GitHub Calendar styles
+===================== */
+
+/* Tous les textes du SVG */
+.ghCal svg text {
+  fill: #e9edc9 !important;
 }
 
-/* Texte Less / More */
-.ghCal .react-activity-calendar__legend-colors text {
-  fill: #efd3d6;
+/* Jours de la semaine légèrement plus doux */
+.ghCal svg text.wday {
+  fill: #8f9a6a !important;
 }
-/* Scrollbar pour Chrome, Edge, Safari */
+
+/* Texte HTML autour du calendrier (Less / More / contributions) */
+.ghCal,
+.ghCal * {
+  color: #e9edc9 !important;
+}
+
+/* =====================
+   Scrollbar custom
+===================== */
+
+/* Chrome, Edge, Safari */
 ::-webkit-scrollbar {
   width: 10px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #12080e; /* fond de la scrollbar */
+  background: #0a0a0a;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #d56b77; /* couleur du "bouton" */
+  background: #656d4a;
   border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #e3b8be; /* couleur au hover */
-}
-
-* {
-  box-sizing: border-box;
-}
-
-html,
-body,
-#root {
-  width: 100%;
-  height: 100%;
-  margin: 0;
-  padding: 0;
-}
-
-canvas {
-  display: block;
+  background: #656d4a8a;
 }

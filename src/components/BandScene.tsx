@@ -178,7 +178,7 @@ function Band({
 
   return (
     <>
-      <group position={[0, 4, 3]}>
+      <group position={[2.2, 4, 3]}>
         <RigidBody
           ref={fixed}
           {...segmentProps}
