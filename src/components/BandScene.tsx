@@ -98,9 +98,38 @@ function Band({
   const { nodes, materials }: any = useGLTF(
     "https://assets.vercel.com/image/upload/contentful/image/e5382hct74si/5huRVDzcoDwnbgrKUo1Lzs/53b6dd7d6b4ffcdbd338fa60265949e1/tag.glb",
   );
-  const texture = useTexture("public/textures/my-band.png");
+  useEffect(() => {
+    const m = materials?.metal;
+    if (!m) return;
 
-  const cardTexture = useTexture("/textures/ma-carte.heic");
+    // Réglage acier naturel
+    m.color.set("#b7bcc2"); // gris acier
+    m.metalness = 1;
+    m.roughness = 0.35; // plus rugueux = moins miroir
+    m.needsUpdate = true;
+  }, [materials]);
+
+  const texture = useTexture("/textures/my-band.png");
+  const cardTexture = useTexture("/textures/ma-carte.png");
+  const backTexture = useTexture("/textures/ma-carte-back.png");
+
+  useEffect(() => {
+    if (!cardTexture || !backTexture) return;
+
+    [cardTexture, backTexture].forEach((t) => {
+      t.flipY = false;
+      t.colorSpace = THREE.SRGBColorSpace;
+
+      // 🔧 Fix UV demi-carte → recentre
+      t.wrapS = t.wrapT = THREE.RepeatWrapping;
+      t.repeat.set(2, 1);
+      t.offset.set(0, 0);
+
+      // Netteté
+      t.anisotropy = 16;
+      t.needsUpdate = true;
+    });
+  }, [cardTexture, backTexture]);
 
   const { width, height } = useThree((state) => state.size);
   const [curve] = useState(
@@ -174,7 +203,6 @@ function Band({
   });
 
   curve.curveType = "chordal";
-  texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
 
   return (
     <>
@@ -243,21 +271,47 @@ function Band({
               )
             }
           >
+            {/* RECTO */}
             <mesh geometry={nodes.card.geometry}>
               <meshPhysicalMaterial
                 map={cardTexture}
                 clearcoat={1}
                 roughness={0.3}
                 metalness={0.5}
+                side={THREE.FrontSide}
               />
             </mesh>
 
-            <mesh
-              geometry={nodes.clip.geometry}
-              material={materials.metal}
-              material-roughness={0.3}
-            />
-            <mesh geometry={nodes.clamp.geometry} material={materials.metal} />
+            {/* VERSO (même géométrie, tournée) */}
+            <mesh geometry={nodes.card.geometry} rotation={[0, Math.PI, 0]}>
+              <meshPhysicalMaterial
+                map={backTexture}
+                clearcoat={1}
+                roughness={0.3}
+                metalness={0.5}
+                side={THREE.FrontSide}
+              />
+            </mesh>
+
+            <mesh geometry={nodes.clip.geometry}>
+              <meshPhysicalMaterial
+                color="#cfd3d6"
+                metalness={1}
+                roughness={0.15}
+                clearcoat={1}
+                reflectivity={1}
+              />
+            </mesh>
+
+            <mesh geometry={nodes.clamp.geometry}>
+              <meshPhysicalMaterial
+                color="#cfd3d6"
+                metalness={1}
+                roughness={0.15}
+                clearcoat={1}
+                reflectivity={1}
+              />
+            </mesh>
           </group>
         </RigidBody>
       </group>
@@ -265,13 +319,15 @@ function Band({
       <mesh ref={band}>
         <meshLineGeometry />
         <meshLineMaterial
-          color="white"
+          color="#656D4A" // ton vert olive
           depthTest={false}
           resolution={[width, height]}
           useMap
           map={texture}
-          repeat={[-3, 1]}
+          repeat={[-4, 1]}
           lineWidth={1}
+          roughness={0.6}
+          metalness={0}
         />
       </mesh>
     </>

@@ -24,21 +24,9 @@
     "url": "https://github.com/marineags/Exercice-1-Produire-un-affichage-en-flexbox"
   },
   {
-    "name": "Flexbox exercise",
-    "description": "Exercice CSS Flexbox",
-    "language": "CSS",
-    "url": "https://github.com/marineags/Exercice-1-Produire-un-affichage-en-flexbox"
-  },
-  {
-    "name": "Flexbox exercise",
-    "description": "Exercice CSS Flexbox",
-    "language": "CSS",
-    "url": "https://github.com/marineags/Exercice-1-Produire-un-affichage-en-flexbox"
-  },
-  {
-    "name": "Flexbox exercise",
-    "description": "Exercice CSS Flexbox",
-    "language": "CSS",
-    "url": "https://github.com/marineags/Exercice-1-Produire-un-affichage-en-flexbox"
+    "name": "Adaopte",
+    "description": "Adaopte est une application web dédiée à la mise en relation entre refuges, bénévoles et personnes souhaitant adopter un animal. ",
+    "language": "React + typescript",
+    "url": "https://github.com/marineags/adaopte"
   }
 ]

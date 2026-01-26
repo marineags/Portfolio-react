@@ -10,7 +10,7 @@ export default function Header({ lang, setLang }: HeaderProps) {
 
   const linkBase =
     "px-4 py-2 rounded-full text-sm transition whitespace-nowrap";
-  const linkIdle = "text-white/80 hover:text-white hover:bg-[#CCD5AE]/10";
+  const linkIdle = "text-white/80 hover:text-white hover:bg-[#FFBF69]/10";
 
   const nav = {
     fr: { home: "Home", bio: "Bio", projects: "Projets", contact: "Contact" },
@@ -32,7 +32,7 @@ export default function Header({ lang, setLang }: HeaderProps) {
             Portfolio
           </div>
 
-          {/* Desktop nav (pas de scroll) */}
+          {/* Desktop nav pas de scroll */}
           <nav className="hidden md:flex items-center gap-1">
             <a href="#home" className={`${linkBase} ${linkIdle}`}>
               {nav.home}

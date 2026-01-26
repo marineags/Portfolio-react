@@ -1,0 +1,72 @@
+import { useState } from "react";
+import emailjs from "@emailjs/browser";
+
+export default function ContactSection() {
+  const [success, setSuccess] = useState(false);
+
+  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+
+    emailjs
+      .sendForm("SERVICE_ID", "TEMPLATE_ID", e.currentTarget, "PUBLIC_KEY")
+      .then(() => {
+        setSuccess(true);
+        e.currentTarget.reset();
+      })
+      .catch(() => {
+        alert("Erreur 😢");
+      });
+  }
+
+  return (
+    <div className="shadow-xl rounded-xl p-6 sm:p-8 w-full h-full transition flex flex-col">
+      {/* Titre */}
+      <h3 className="text-sm text-[#E9EDC9] italic mb-4 text-center">
+        Envoyer un message
+      </h3>
+
+      {/* Formulaire */}
+      <form onSubmit={handleSubmit} className="flex flex-col gap-3 flex-grow">
+        <input
+          type="text"
+          name="name"
+          placeholder="Nom"
+          required
+          className="bg-black/60 border border-white/20 rounded-md px-3 py-2 text-white text-sm focus:outline-none focus:border-[#FFBF69]"
+        />
+
+        <input
+          type="email"
+          name="email"
+          placeholder="Email"
+          required
+          className="bg-black/60 border border-white/20 rounded-md px-3 py-2 text-white text-sm focus:outline-none focus:border-[#FFBF69]"
+        />
+
+        <textarea
+          name="message"
+          placeholder="Message"
+          rows={3}
+          required
+          className="bg-black/60 border border-white/20 rounded-md px-3 py-2 text-white text-sm focus:outline-none focus:border-[#FFBF69] resize-none"
+        />
+
+        {/* Footer du form : bouton bottom-right */}
+        <div className="flex justify-end mt-auto">
+          <button
+            type="submit"
+            className="bg-[#FFBF69] hover:bg-[#E88866] transition text-black font-semibold px-4 py-2 rounded-md text-sm"
+          >
+            Envoyer
+          </button>
+        </div>
+
+        {success && (
+          <p className="text-green-400 text-xs text-center mt-2">
+            Message envoyé ✨
+          </p>
+        )}
+      </form>
+    </div>
+  );
+}

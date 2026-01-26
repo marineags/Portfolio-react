@@ -4,6 +4,7 @@ import RepoCard from "./components/RepoCard";
 import Header from "./components/Header";
 import ContributionsLikeGitHub from "./components/GitHubHeatmap";
 import BandScene from "./components/BandScene";
+import ContactSection from "./components/ContactSection.tsx";
 
 const translations = {
   fr: {
@@ -73,15 +74,15 @@ export default function App() {
           <div className="w-full sm:w-auto text-white flex flex-col gap-6 sm:pt-45">
             <h1 className="font-['Audiowide'] leading-none text-5xl sm:text-8xl">
               M
-              <span className="text-[#656d4a] drop-shadow-[0_0_10px_#656d4a]">
+              <span className="text-[#FFBF69] drop-shadow-[0_0_10px_#FFE5B4]">
                 a
               </span>
               rine{" "}
-              <span className="text-[#656d4a] drop-shadow-[0_0_10px_#656d4a]">
+              <span className="text-[#FFBF69] drop-shadow-[0_0_10px_#FFE5B4]">
                 A
               </span>
               g
-              <span className="text-[#656d4a] drop-shadow-[0_0_10px_#656d4a]">
+              <span className="text-[#FFBF69] drop-shadow-[0_0_10px_#FFE5B4]">
                 a
               </span>
               sse
@@ -91,7 +92,7 @@ export default function App() {
 
             {/* Bio -> cliquable */}
             <a href="#about" className="pointer-events-auto w-fit">
-              <button className="w-fit px-5 py-3 rounded-full bg-white/15 text-gray-200 font-semibold backdrop-blur hover:bg-[#CCD5AE]/25 transition">
+              <button className="w-fit px-5 py-3 rounded-full bg-white/15 text-gray-200 font-semibold backdrop-blur hover:bg-[#FFBF69]/25 transition">
                 {t.bioBtn}
               </button>
             </a>
@@ -147,11 +148,11 @@ export default function App() {
           {t.aboutTitle}
         </h2>
 
-        <div className="max-w-6xl pt-2 sm:pt-9 mx-auto grid grid-cols-1 md:grid-cols-[260px_1fr] gap-8 sm:gap-10 items-start">
+        <div className="w-full pt-2 sm:pt-9 grid grid-cols-1 md:grid-cols-[260px_1fr] gap-8 sm:gap-10 items-start">
           {/* Photo */}
           <div className="bg-white/5 border border-white/10 rounded-2xl p-4 backdrop-blur-md shadow-xl">
             <img
-              src="/profil/IMG_5854.heic"
+              src="public/profil/Capture d’écran 2026-01-25 à 17.55.28.png"
               alt={t.profileAlt}
               className="h-72 sm:h-89 w-full object-cover rounded-2xl"
             />
@@ -204,7 +205,7 @@ export default function App() {
 
               {/* Coéquipier */}
               <div className="bg-white/5 border border-white/10 rounded-2xl px-6 sm:px-8 py-8 backdrop-blur-md shadow-xl">
-                <p className="text-xs uppercase tracking-wider text-[#656d4a] mb-3">
+                <p className="text-xs uppercase tracking-wider text-[#FFBF69] mb-3">
                   {t.teammateLabel}
                 </p>
 
@@ -265,83 +266,96 @@ export default function App() {
       {/* CONTACT --------------------------------------------------------------- */}
       <section
         id="contact"
-        className="relative min-h-screen px-6 py-20 sm:px-20 sm:py-28 overflow-hidden"
+        className="relative h-[100svh] overflow-hidden px-6 py-16 sm:px-20 sm:py-20 flex flex-col"
       >
-        <h2 className="text-3xl sm:text-4xl font-bold mb-10 sm:mb-14 text-white">
+        <h2 className="text-3xl sm:text-4xl font-bold text-white mb-10">
           {t.contactTitle}
         </h2>
 
-        {/* mobile: grille / desktop: reste propre */}
-        <div className="relative z-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {/* LinkedIn */}
-          <a
-            href="https://www.linkedin.com/in/marine-agasse-346886292/"
-            target="_blank"
-            rel="noreferrer"
-            className="group"
-          >
-            <div className="shadow-xl rounded-xl p-6 sm:p-8 w-full flex flex-col items-center bg-white/5 border border-white/10 hover:bg-white/10 transition">
-              <img
-                src="/icons/icons8-linkedin-50.png"
-                alt="LinkedIn"
-                className="h-12 mb-4"
-              />
-              <p className="text-sm text-[#E9EDC9] italic group-hover:text-white transition">
-                LinkedIn
-              </p>
-            </div>
-          </a>
+        {/* Zone principale (prend l’espace restant) */}
+        <div className="flex-1 min-h-0">
+          <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 h-full">
+            {/* ===== GAUCHE : 4 cartes 2x2 ===== */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 content-start">
+              {/* LinkedIn */}
+              <a
+                href="https://www.linkedin.com/in/marine-agasse-346886292/"
+                target="_blank"
+                rel="noreferrer"
+                className="group"
+              >
+                <div className="shadow-xl rounded-xl p-6 sm:p-8 w-full flex flex-col items-center justify-center bg-white/5 border border-white/10 hover:bg-white/10 transition">
+                  <img
+                    src="/icons/icons8-linkedin-50.png"
+                    alt="LinkedIn"
+                    className="h-12 mb-4"
+                  />
+                  <p className="text-sm text-[#E9EDC9] italic group-hover:text-white transition">
+                    LinkedIn
+                  </p>
+                </div>
+              </a>
 
-          {/* GitHub */}
-          <a
-            href="https://github.com/marineags"
-            target="_blank"
-            rel="noreferrer"
-            className="group"
-          >
-            <div className="shadow-xl rounded-xl p-6 sm:p-8 w-full flex flex-col items-center bg-white/5 border border-white/10 hover:bg-white/10 transition">
-              <img
-                src="/icons/icons8-github-50.png"
-                alt="GitHub"
-                className="h-12 mb-4"
-              />
-              <p className="text-sm text-[#E9EDC9] italic group-hover:text-white transition">
-                GitHub
-              </p>
-            </div>
-          </a>
+              {/* GitHub */}
+              <a
+                href="https://github.com/marineags"
+                target="_blank"
+                rel="noreferrer"
+                className="group"
+              >
+                <div className="shadow-xl rounded-xl p-6 sm:p-8 w-full flex flex-col items-center justify-center bg-white/5 border border-white/10 hover:bg-white/10 transition">
+                  <img
+                    src="/icons/icons8-github-50.png"
+                    alt="GitHub"
+                    className="h-12 mb-4"
+                  />
+                  <p className="text-sm text-[#FFE5B4] italic group-hover:text-white transition">
+                    GitHub
+                  </p>
+                </div>
+              </a>
 
-          {/* Email */}
-          <a href="mailto:agsmarine23@gmail.com" className="group">
-            <div className="shadow-xl rounded-xl p-6 sm:p-8 w-full flex flex-col items-center bg-white/5 border border-white/10 hover:bg-white/10 transition">
-              <img
-                src="/icons/icons8-mail-48.png"
-                alt="Email"
-                className="h-12 mb-4"
-              />
-              <p className="text-sm text-[#E9EDC9] italic group-hover:text-white transition">
-                agsmarine23@gmail.com
-              </p>
-            </div>
-          </a>
+              {/* Email */}
+              <a href="mailto:agsmarine23@gmail.com" className="group">
+                <div className="shadow-xl rounded-xl p-6 sm:p-8 w-full flex flex-col items-center justify-center bg-white/5 border border-white/10 hover:bg-white/10 transition">
+                  <img
+                    src="/icons/icons8-mail-48.png"
+                    alt="Email"
+                    className="h-12 mb-4"
+                  />
+                  <p className="text-sm text-[#FFE5B4] italic group-hover:text-white transition">
+                    agsmarine23@gmail.com
+                  </p>
+                </div>
+              </a>
 
-          {/* Téléphone */}
-          <a href="tel:+33638829826" className="group">
-            <div className="shadow-xl rounded-xl p-6 sm:p-8 w-full flex flex-col items-center bg-white/5 border border-white/10 hover:bg-white/10 transition">
-              <img
-                src="/icons/icons8-telephone-50.png"
-                alt="Téléphone"
-                className="h-12 mb-4"
-              />
-              <p className="text-sm text-[#E9EDC9] italic group-hover:text-white transition">
-                06 38 82 98 26
-              </p>
+              {/* Téléphone */}
+              <a href="tel:+33638829826" className="group">
+                <div className="shadow-xl rounded-xl p-6 sm:p-8 w-full flex flex-col items-center justify-center bg-white/5 border border-white/10 hover:bg-white/10 transition">
+                  <img
+                    src="/icons/icons8-telephone-50.png"
+                    alt="Téléphone"
+                    className="h-12 mb-4"
+                  />
+                  <p className="text-sm text-[#FFE5B4] italic group-hover:text-white transition">
+                    06 38 82 98 26
+                  </p>
+                </div>
+              </a>
             </div>
-          </a>
+
+            {/* ===== DROITE : Formulaire ===== */}
+            <div className="flex lg:justify-end">
+              {/* Largeur alignée avec l’esthétique des cartes */}
+              <div className="w-full max-w-xl">
+                <ContactSection />
+              </div>
+            </div>
+          </div>
         </div>
 
         {/* Footer */}
-        <footer className="relative z-10 mt-16 sm:mt-70 border-t border-white/10 py-10 text-center text-[#E9EDC9]/30 text-sm">
+        <footer className="mt-10 border-t border-white/10 py-6 text-center text-[#FFE5B4]/30 text-sm">
           © {new Date().getFullYear()} Marine Agasse
         </footer>
       </section>
