@@ -21,7 +21,10 @@ export default function ContactSection() {
   return (
     <div className="shadow-xl rounded-xl p-6 sm:p-8 w-full h-full transition flex flex-col">
       {/* Titre */}
-      <h3 className="text-sm text-[#E9EDC9] italic mb-4 text-center">
+      <h3
+        className="text-md text-[#FFE5B4] font-bold
+ mb-4 text-center"
+      >
         Envoyer un message
       </h3>
 
