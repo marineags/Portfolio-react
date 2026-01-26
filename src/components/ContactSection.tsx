@@ -52,7 +52,7 @@ export default function ContactSection() {
         />
 
         {/* Footer du form : bouton bottom-right */}
-        <div className="flex justify-end mt-auto">
+        <div className="flex justify-end mt-8">
           <button
             type="submit"
             className="bg-[#FFBF69] hover:bg-[#E88866] transition text-black font-semibold px-4 py-2 rounded-md text-sm"
