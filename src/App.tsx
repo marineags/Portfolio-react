@@ -152,7 +152,7 @@ export default function App() {
           {/* Photo */}
           <div className="bg-white/5 border border-white/10 rounded-2xl p-4 backdrop-blur-md shadow-xl">
             <img
-              src="public/profil/Capture d’écran 2026-01-25 à 17.55.28.png"
+              src="public/profil/marine.png"
               alt={t.profileAlt}
               className="h-72 sm:h-89 w-full object-cover rounded-2xl"
             />
