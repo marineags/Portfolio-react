@@ -5,6 +5,7 @@ import Header from "./components/Header";
 import ContributionsLikeGitHub from "./components/GitHubHeatmap";
 import BandScene from "./components/BandScene";
 import ContactSection from "./components/ContactSection.tsx";
+import marineImg from "../assets/profil/marine.png";
 
 const translations = {
   fr: {
@@ -152,7 +153,7 @@ export default function App() {
           {/* Photo */}
           <div className="bg-white/5 border border-white/10 rounded-2xl p-4 backdrop-blur-md shadow-xl">
             <img
-              src="public/profil/marine.png"
+              src={marineImg}
               alt={t.profileAlt}
               className="h-72 sm:h-89 w-full object-cover rounded-2xl"
             />
