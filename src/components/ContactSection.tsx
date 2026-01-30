@@ -7,20 +7,24 @@ export default function ContactSection() {
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
 
+    const form = e.currentTarget; // ✅ on garde la ref tout de suite
+
     emailjs
       .sendForm(
         import.meta.env.VITE_EMAILJS_SERVICE_ID,
         import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
-        e.currentTarget,
+        form,
         import.meta.env.VITE_EMAILJS_PUBLIC_KEY,
       )
       .then(() => {
         setSuccess(true);
-        e.currentTarget.reset();
+        form.reset(); //
       })
       .catch((error) => {
-        console.error(error);
-        alert("Erreur 😢");
+        console.log("EmailJS error object:", error);
+        console.log("status:", (error as any)?.status);
+        console.log("text:", (error as any)?.text);
+        alert(`Erreur 😢 ${(error as any)?.text || "Regarde la console"}`);
       });
   }
 
@@ -33,7 +37,7 @@ export default function ContactSection() {
       <form onSubmit={handleSubmit} className="flex flex-col gap-3 flex-grow">
         <input
           type="text"
-          name="name"
+          name="from_name"
           placeholder="Nom"
           required
           className="bg-black/60 border border-white/20 rounded-md px-3 py-2 text-white text-sm focus:outline-none focus:border-[#FFBF69]"
@@ -41,7 +45,7 @@ export default function ContactSection() {
 
         <input
           type="email"
-          name="email"
+          name="reply_to"
           placeholder="Email"
           required
           className="bg-black/60 border border-white/20 rounded-md px-3 py-2 text-white text-sm focus:outline-none focus:border-[#FFBF69]"
@@ -66,7 +70,7 @@ export default function ContactSection() {
 
         {success && (
           <p className="text-green-400 text-xs text-center mt-2">
-            Message envoyé ✨
+            Message envoyé
           </p>
         )}
       </form>
