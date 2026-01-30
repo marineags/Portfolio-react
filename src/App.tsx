@@ -5,7 +5,7 @@ import Header from "./components/Header";
 import ContributionsLikeGitHub from "./components/GitHubHeatmap";
 import BandScene from "./components/BandScene";
 import ContactSection from "./components/ContactSection.tsx";
-import marineImg from "../assets/profil/marine.png";
+import marinePng from "./assets/profil/marine.png";
 
 const translations = {
   fr: {
@@ -23,7 +23,7 @@ const translations = {
     cvPreviewAlt: "Aperçu CV",
     profileAlt: "Marine",
     aboutText:
-      "Je passe une grande partie de mon temps à explorer la façon dont nous interagissons avec le web. En formation développement chez Ada Tech School, j’expérimente le front-end et le back-end à travers des projets concrets.",
+      "Je passe une grande partie de mon temps à explorer la manière dont nous interagissons avec le web. Après plusieurs expériences dans le commerce, j’ai choisi de me reconvertir vers le développement, un domaine qui me permet d’apprendre en continu et de créer du concret. Actuellement en formation chez Ada Tech School, j’explore aussi bien le front-end que le back-end à travers des projets pratiques.",
   },
   en: {
     juniorDev: "Junior Developer",
@@ -40,7 +40,7 @@ const translations = {
     cvPreviewAlt: "Resume preview",
     profileAlt: "Marine",
     aboutText:
-      "I spend a large part of my time exploring how we interact with the web. Currently studying development at Ada Tech School, I experiment with front-end and back-end through concrete projects.",
+      "I spend a large part of my time exploring how we interact with the web. After several experiences in the retail sector, I chose to retrain in development, a field that allows me to learn continuously and build tangible solutions. Currently training at Ada Tech School, I explore both front-end and back-end development through hands-on projects.",
   },
 } as const;
 
@@ -153,7 +153,7 @@ export default function App() {
           {/* Photo */}
           <div className="bg-white/5 border border-white/10 rounded-2xl p-4 backdrop-blur-md shadow-xl">
             <img
-              src={marineImg}
+              src={marinePng}
               alt={t.profileAlt}
               className="h-72 sm:h-89 w-full object-cover rounded-2xl"
             />
