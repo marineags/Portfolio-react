@@ -345,7 +345,7 @@ export default function App() {
               </a>
             </div>
 
-            {/* ===== DROITE : Formulaire ===== */}
+            {/* =====Formulaire ===== */}
             <div className="flex lg:justify-end">
               {/* Largeur alignée avec l’esthétique des cartes */}
               <div className="w-full max-w-xl">
