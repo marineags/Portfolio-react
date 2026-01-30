@@ -155,7 +155,7 @@ export default function App() {
             <img
               src={marinePng}
               alt={t.profileAlt}
-              className="h-72 sm:h-89 w-full object-cover rounded-2xl"
+              className="h-90 sm:h-97 w-full object-cover rounded-2xl"
             />
           </div>
 

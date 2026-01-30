@@ -8,27 +8,28 @@ export default function ContactSection() {
     e.preventDefault();
 
     emailjs
-      .sendForm("SERVICE_ID", "TEMPLATE_ID", e.currentTarget, "PUBLIC_KEY")
+      .sendForm(
+        import.meta.env.VITE_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+        e.currentTarget,
+        import.meta.env.VITE_EMAILJS_PUBLIC_KEY,
+      )
       .then(() => {
         setSuccess(true);
         e.currentTarget.reset();
       })
-      .catch(() => {
+      .catch((error) => {
+        console.error(error);
         alert("Erreur 😢");
       });
   }
 
   return (
-    <div className="shadow-xl rounded-xl p-6 sm:p-8 w-full h-full transition flex flex-col">
-      {/* Titre */}
-      <h3
-        className="text-md text-[#FFE5B4] font-bold
- mb-4 text-center"
-      >
+    <div className="shadow-xl rounded-xl p-6 sm:p-8 w-full h-full flex flex-col">
+      <h3 className="text-md text-[#FFE5B4] font-bold mb-4 text-center">
         Envoyer un message
       </h3>
 
-      {/* Formulaire */}
       <form onSubmit={handleSubmit} className="flex flex-col gap-3 flex-grow">
         <input
           type="text"
@@ -54,7 +55,6 @@ export default function ContactSection() {
           className="bg-black/60 border border-white/20 rounded-md px-3 py-2 text-white text-sm focus:outline-none focus:border-[#FFBF69] resize-none"
         />
 
-        {/* Footer du form : bouton bottom-right */}
         <div className="flex justify-end mt-8">
           <button
             type="submit"
