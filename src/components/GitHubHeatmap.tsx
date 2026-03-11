@@ -7,7 +7,7 @@ type GitHubHeatmapProps = {
 export default function ContributionsGitHub({ username }: GitHubHeatmapProps) {
   return (
     <div className="ghCal rounded-2xl p-6 bg-white/5 backdrop-blur-md border border-white/10">
-      <h3 className="text-xl font-semibold text-[#E9EDC9] mb-4">
+      <h3 className="text-xl font-semibold text-[#FFFFFFF] mb-4">
         Activité GitHub
       </h3>
 
@@ -18,7 +18,7 @@ export default function ContributionsGitHub({ username }: GitHubHeatmapProps) {
         fontSize={16}
         showWeekdayLabels
         theme={{
-          dark: ["#14110c", "#3A2A12", "#7A4A1E", "#C47A2C", "#FFBF69"],
+          dark: ["#fd6e8b0c", "#fd6e8b48", "#fd6e8b86", "#fd6e8bd4", "#FD6E8B"],
           light: ["#f8e9f0", "#f2b6cf", "#ea7ba7", "#d95c93", "#ff5c9a"],
         }}
       />

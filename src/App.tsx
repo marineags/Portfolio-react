@@ -75,15 +75,15 @@ export default function App() {
           <div className="w-full sm:w-auto text-white flex flex-col gap-6 sm:pt-45">
             <h1 className="font-['Audiowide'] leading-none text-5xl sm:text-8xl">
               M
-              <span className="text-[#FFBF69] drop-shadow-[0_0_10px_#FFE5B4]">
+              <span className="text-[#FD6E8B] drop-shadow-[0_0_10px_#FD9BAE]">
                 a
               </span>
               rine{" "}
-              <span className="text-[#FFBF69] drop-shadow-[0_0_10px_#FFE5B4]">
+              <span className="text-[#FD6E8B] drop-shadow-[0_0_10px_#FD9BAE]">
                 A
               </span>
               g
-              <span className="text-[#FFBF69] drop-shadow-[0_0_10px_#FFE5B4]">
+              <span className="text-[#FD6E8B] drop-shadow-[0_0_10px_#FD9BAE]">
                 a
               </span>
               sse
@@ -93,7 +93,7 @@ export default function App() {
 
             {/* Bio -> cliquable */}
             <a href="#about" className="pointer-events-auto w-fit">
-              <button className="w-fit px-5 py-3 rounded-full bg-white/15 text-gray-200 font-semibold backdrop-blur hover:bg-[#FFBF69]/25 transition">
+              <button className="w-fit px-5 py-3 rounded-full bg-white/15 text-gray-200 font-semibold backdrop-blur hover:bg-[#FD6E8B]/25 transition">
                 {t.bioBtn}
               </button>
             </a>
@@ -163,7 +163,7 @@ export default function App() {
           <div className="grid grid-rows-[auto_auto] gap-8 sm:gap-10">
             {/* Texte long */}
             <div className="bg-white/5 border border-white/10 rounded-2xl p-6 sm:p-8 backdrop-blur-md shadow-xl">
-              <p className="text-[#EFD3D6] leading-relaxed text-base sm:text-lg">
+              <p className="text-[#FFFFFF] leading-relaxed text-base sm:text-lg">
                 {t.aboutText}
               </p>
             </div>
@@ -206,15 +206,15 @@ export default function App() {
 
               {/* Coéquipier */}
               <div className="bg-white/5 border border-white/10 rounded-2xl px-6 sm:px-8 py-8 backdrop-blur-md shadow-xl">
-                <p className="text-xs uppercase tracking-wider text-[#FFBF69] mb-3">
+                <p className="text-xs uppercase tracking-wider text-[#FD6E8B] mb-3">
                   {t.teammateLabel}
                 </p>
 
-                <p className="text-[#E9EDC9] font-semibold mb-3">
+                <p className="text-[#FDAFBF] font-semibold mb-3">
                   {t.teammateName}
                 </p>
 
-                <p className="text-sm text-[#EFD3D6]/80 leading-relaxed">
+                <p className="text-sm text-[#FDAFBF]/70 leading-relaxed">
                   {t.teammateDesc}
                 </p>
               </div>
@@ -231,7 +231,7 @@ export default function App() {
 
         {/* Repos (un peu plus large sur mobile) */}
         <div className="rounded-2xl bg-black/70 backdrop-blur-xl border border-white/10 shadow-xl p-2 sm: mb-7">
-          <h3 className="text-lg sm:text-xl font-semibold text-[#E9EDC9] mb-2">
+          <h3 className="text-lg sm:text-xl font-semibold text-[#FD6E8B] mb-2">
             {t.githubProjectsTitle}
           </h3>
 
@@ -291,7 +291,7 @@ export default function App() {
                     alt="LinkedIn"
                     className="h-12 mb-4"
                   />
-                  <p className="text-sm text-[#E9EDC9] italic group-hover:text-white transition">
+                  <p className="text-sm text-[#FDAFBF] italic group-hover:text-white transition">
                     LinkedIn
                   </p>
                 </div>
@@ -310,7 +310,7 @@ export default function App() {
                     alt="GitHub"
                     className="h-12 mb-4"
                   />
-                  <p className="text-sm text-[#FFE5B4] italic group-hover:text-white transition">
+                  <p className="text-sm text-[#FDAFBF] italic group-hover:text-white transition">
                     GitHub
                   </p>
                 </div>
@@ -324,7 +324,7 @@ export default function App() {
                     alt="Email"
                     className="h-12 mb-4"
                   />
-                  <p className="text-sm text-[#FFE5B4] italic group-hover:text-white transition">
+                  <p className="text-sm text-[#FDAFBF] italic group-hover:text-white transition">
                     agsmarine23@gmail.com
                   </p>
                 </div>
@@ -338,7 +338,7 @@ export default function App() {
                     alt="Téléphone"
                     className="h-12 mb-4"
                   />
-                  <p className="text-sm text-[#FFE5B4] italic group-hover:text-white transition">
+                  <p className="text-sm text-[#FDAFBF] italic group-hover:text-white transition">
                     06 38 82 98 26
                   </p>
                 </div>
@@ -356,7 +356,7 @@ export default function App() {
         </div>
 
         {/* Footer */}
-        <footer className="mt-10 border-t border-white/10 py-6 text-center text-[#FFE5B4]/30 text-sm">
+        <footer className="mt-10 border-t border-white/10 py-6 text-center text-[#FD6E8B]/30 text-sm">
           © {new Date().getFullYear()} Marine Agasse
         </footer>
       </section>

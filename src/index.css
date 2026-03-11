@@ -46,18 +46,15 @@ canvas {
 
 /* Texte dans le SVG (mois/jours) */
 .ghCal svg text {
-  fill: #ffe5b4 !important;
+  fill: #FDAFBF !important;
 }
 
-/* Jours semaine un peu plus doux */
-.ghCal svg text.wday {
-  fill: #ffe5b4 !important;
-}
+
 
 /* Texte HTML autour (Less / More / contributions) */
 .ghCal,
 .ghCal * {
-  color: #ffe5b4 !important;
+  color: #FD6E8B!important;
 }
 
 /* =========================
@@ -75,12 +72,12 @@ canvas {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #ffbf69;
+  background: #FD6E8B;
   border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #98713e;
+  background: #fd6e8b31;
 }
 
 /* Cache scrollbar UNIQUEMENT là où tu mets className="no-scrollbar" */

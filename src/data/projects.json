@@ -28,5 +28,11 @@
     "description": "Adaopte est une application web dédiée à la mise en relation entre refuges, bénévoles et personnes souhaitant adopter un animal. ",
     "language": "React + typescript",
     "url": "https://github.com/marineags/adaopte"
+  },
+    {
+    "name": "Lunéa",
+    "description": "Lunéa est une application dédiée au suivi de la ménopause et du bien-être féminin.",
+    "language": "...",
+    "url": "https://github.com/marineags/Lunea"
   }
 ]
