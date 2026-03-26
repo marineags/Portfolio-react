@@ -6,24 +6,28 @@ export default function ContactSection() {
 
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    const form = e.currentTarget;
+
+    console.log("SERVICE_ID", import.meta.env.VITE_EMAILJS_SERVICE_ID);
+    console.log("TEMPLATE_ID", import.meta.env.VITE_EMAILJS_TEMPLATE_ID);
+    console.log("PUBLIC_KEY", import.meta.env.VITE_EMAILJS_PUBLIC_KEY);
 
     emailjs
-      .send(
+      .sendForm(
         import.meta.env.VITE_EMAILJS_SERVICE_ID,
         import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
-        {
-          from_name: "Test",
-          reply_to: "test@test.com",
-          message: "Test depuis production",
-        },
+        form,
         import.meta.env.VITE_EMAILJS_PUBLIC_KEY
       )
       .then(() => {
         setSuccess(true);
+        form.reset();
         alert("OK CA MARCHE");
       })
       .catch((error) => {
         console.log("EmailJS error:", error);
+        console.log("status:", error?.status);
+        console.log("text:", error?.text);
         alert(`Erreur 😢 ${error?.text || "Regarde la console"}`);
       });
   }
