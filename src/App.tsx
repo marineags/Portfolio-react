@@ -123,7 +123,7 @@ export default function App() {
             <div className="h-[260px] w-full bg-white/20 rounded-md overflow-hidden">
               {/* Note: pour un vrai aperçu, utilise une image (png/jpg) exportée de ton CV */}
               <img
-                src="/Marine-Agasse-CV.pdf"
+                src="/cv-marine-agasse.pdf"
                 alt={t.cvPreviewAlt}
                 draggable="false"
                 className="w-full h-full object-cover pointer-events-none select-none"
@@ -132,7 +132,7 @@ export default function App() {
           </div>
 
           {/* Bouton CV */}
-          <a href="/CV-Marine Agasse.pdf" target="_blank" rel="noreferrer">
+          <a href="/cv-marine-agasse.pdf" target="_blank" rel="noreferrer">
             <button className="px-5 py-3 rounded-full bg-white/15 text-gray-200 hover:bg-[#CCD5AE]/25 transition">
               CV
             </button>
