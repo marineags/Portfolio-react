@@ -5,32 +5,28 @@ export default function ContactSection() {
   const [success, setSuccess] = useState(false);
 
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
-  e.preventDefault();
+    e.preventDefault();
 
-  const form = e.currentTarget;
-
-  console.log("SERVICE ID:", import.meta.env.VITE_EMAILJS_SERVICE_ID);
-  console.log("TEMPLATE ID:", import.meta.env.VITE_EMAILJS_TEMPLATE_ID);
-  console.log("PUBLIC KEY:", import.meta.env.VITE_EMAILJS_PUBLIC_KEY);
-
-  emailjs
-    .sendForm(
-      import.meta.env.VITE_EMAILJS_SERVICE_ID,
-      import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
-      form,
-      import.meta.env.VITE_EMAILJS_PUBLIC_KEY
-    )
-    .then(() => {
-      setSuccess(true);
-      form.reset();
-    })
-    .catch((error) => {
-      console.log("EmailJS error object:", error);
-      console.log("status:", error?.status);
-      console.log("text:", error?.text);
-      alert(`Erreur 😢 ${error?.text || "Regarde la console"}`);
-    });
-}
+    emailjs
+      .send(
+        import.meta.env.VITE_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+        {
+          from_name: "Test",
+          reply_to: "test@test.com",
+          message: "Test depuis production",
+        },
+        import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+      )
+      .then(() => {
+        setSuccess(true);
+        alert("OK CA MARCHE");
+      })
+      .catch((error) => {
+        console.log("EmailJS error:", error);
+        alert(`Erreur 😢 ${error?.text || "Regarde la console"}`);
+      });
+  }
 
   return (
     <div className="shadow-xl rounded-xl p-6 sm:p-8 w-full h-full flex flex-col">
@@ -44,7 +40,7 @@ export default function ContactSection() {
           name="from_name"
           placeholder="Nom"
           required
-          className="bg-black/60 border border-white/20 rounded-md px-3 py-2 text-white text-sm focus:outline-none focus:border-[#FD6E8B]"
+          className="bg-black/60 border border-white/20 rounded-md px-3 py-2 text-white text-sm"
         />
 
         <input
@@ -52,7 +48,7 @@ export default function ContactSection() {
           name="reply_to"
           placeholder="Email"
           required
-          className="bg-black/60 border border-white/20 rounded-md px-3 py-2 text-white text-sm focus:outline-none focus:border-[#FD6E8B]"
+          className="bg-black/60 border border-white/20 rounded-md px-3 py-2 text-white text-sm"
         />
 
         <textarea
@@ -60,7 +56,7 @@ export default function ContactSection() {
           placeholder="Message"
           rows={3}
           required
-          className="bg-black/60 border border-white/20 rounded-md px-3 py-2 text-white text-sm focus:outline-none focus:border-[#FD6E8B] resize-none"
+          className="bg-black/60 border border-white/20 rounded-md px-3 py-2 text-white text-sm"
         />
 
         <div className="flex justify-end mt-8">
@@ -81,4 +77,3 @@ export default function ContactSection() {
     </div>
   );
 }
-
