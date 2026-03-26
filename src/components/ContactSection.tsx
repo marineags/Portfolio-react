@@ -5,28 +5,32 @@ export default function ContactSection() {
   const [success, setSuccess] = useState(false);
 
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
-    e.preventDefault();
+  e.preventDefault();
 
-    const form = e.currentTarget; // ✅ on garde la ref tout de suite
+  const form = e.currentTarget;
 
-    emailjs
-      .sendForm(
-        import.meta.env.VITE_EMAILJS_SERVICE_ID,
-        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
-        form,
-        import.meta.env.VITE_EMAILJS_PUBLIC_KEY,
-      )
-      .then(() => {
-        setSuccess(true);
-        form.reset(); //
-      })
-      .catch((error) => {
-        console.log("EmailJS error object:", error);
-        console.log("status:", (error as any)?.status);
-        console.log("text:", (error as any)?.text);
-        alert(`Erreur 😢 ${(error as any)?.text || "Regarde la console"}`);
-      });
-  }
+  console.log("SERVICE ID:", import.meta.env.VITE_EMAILJS_SERVICE_ID);
+  console.log("TEMPLATE ID:", import.meta.env.VITE_EMAILJS_TEMPLATE_ID);
+  console.log("PUBLIC KEY:", import.meta.env.VITE_EMAILJS_PUBLIC_KEY);
+
+  emailjs
+    .sendForm(
+      import.meta.env.VITE_EMAILJS_SERVICE_ID,
+      import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+      form,
+      import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+    )
+    .then(() => {
+      setSuccess(true);
+      form.reset();
+    })
+    .catch((error) => {
+      console.log("EmailJS error object:", error);
+      console.log("status:", error?.status);
+      console.log("text:", error?.text);
+      alert(`Erreur 😢 ${error?.text || "Regarde la console"}`);
+    });
+}
 
   return (
     <div className="shadow-xl rounded-xl p-6 sm:p-8 w-full h-full flex flex-col">
@@ -77,3 +81,4 @@ export default function ContactSection() {
     </div>
   );
 }
+
