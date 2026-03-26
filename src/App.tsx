@@ -132,7 +132,7 @@ export default function App() {
           </div>
 
           {/* Bouton CV */}
-          <a href="/Marine-Agasse-CV.pdf" target="_blank" rel="noreferrer">
+          <a href="public/CV-Marine Agasse.pdf" target="_blank" rel="noreferrer">
             <button className="px-5 py-3 rounded-full bg-white/15 text-gray-200 hover:bg-[#CCD5AE]/25 transition">
               CV
             </button>
