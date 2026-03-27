@@ -7,6 +7,7 @@ import BandScene from "./components/BandScene";
 import ContactSection from "./components/ContactSection";
 import marinePng from "./assets/profil/marine.png";
 import Cv from "./components/Cv";
+import MobilePortfolio from "./components/MobilePortfolio";
 
 const translations = {
   fr: {
@@ -60,9 +61,14 @@ export default function App() {
     };
   }, [showCv]);
 
-  return (
-    <div className="bg-black text-white">
-      <Header lang={lang} setLang={setLang} />
+return (
+<>
+  {/* VERSION MOBILE */}
+  <MobilePortfolio t={t} showCv={showCv} setShowCv={setShowCv} />
+
+  {/* VERSION DESKTOP */}
+  <div className="hidden sm:block bg-black text-white">
+    <Header lang={lang} setLang={setLang} />
 
       {/* HOME -------------------------------------------------- */}
       <section id="home" className="relative min-h-screen overflow-hidden">
@@ -379,5 +385,6 @@ export default function App() {
         </div>
       )}
     </div>
+  </>
   );
 }
