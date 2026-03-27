@@ -19,7 +19,7 @@ export default function ContributionsGitHub({ username }: GitHubHeatmapProps) {
         showWeekdayLabels
         theme={{
           dark: ["#fd6e8b0c", "#fd6e8b48", "#fd6e8b86", "#fd6e8bd4", "#FD6E8B"],
-          light: ["#f8e9f0", "#f2b6cf", "#ea7ba7", "#d95c93", "#ff5c9a"],
+          light: ["#fd6e8b0c", "#fd6e8b48", "#fd6e8b86", "#fd6e8bd4", "#FD6E8B"],
         }}
       />
     </div>

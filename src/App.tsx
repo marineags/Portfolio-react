@@ -111,7 +111,7 @@ export default function App() {
 
       {/* ===== CV MOBILE ===== */}
       <a
-        href="./assets/marine-agasse-3.pdf"
+        href="src/assets/marine-agasse-3.pdf"
         target="_blank"
         rel="noreferrer"
         className="pointer-events-auto sm:hidden w-fit px-5 py-3 rounded-full bg-white/10 text-gray-200 font-semibold backdrop-blur border border-white/10 hover:bg-white/15 transition"
