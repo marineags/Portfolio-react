@@ -3,7 +3,7 @@
     "name": "Quizz",
     "description": "Jeu de quiz interactif",
     "language": "JavaScript",
-    "url": "https://github.com/marineags/Quizz"
+    "url": "https://quizz-pi-plum.vercel.app"
   },
   {
     "name": "Portfolio",
@@ -15,13 +15,13 @@
     "name": "Flexbox exercise",
     "description": "Exercice CSS Flexbox",
     "language": "CSS",
-    "url": "https://github.com/marineags/Exercice-1-Produire-un-affichage-en-flexbox"
+    "url": "https://exercice-1-produire-un-affichage-en.vercel.app/"
   },
   {
     "name": "Adaopte",
     "description": "Adaopte est une application web dédiée à la mise en relation entre refuges, bénévoles et personnes souhaitant adopter un animal. ",
     "language": "React + typescript",
-    "url": "https://github.com/marineags/adaopte"
+    "url": "https://adaopte-tau.vercel.app/"
   },
     {
     "name": "Lunéa",
