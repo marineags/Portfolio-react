@@ -703,7 +703,7 @@ export default function CvMarine() {
             <p className="hero-text">
               Issue du domaine commercial, j'ai choisi de me réorienter vers le développement web — un
               secteur en constante évolution qui correspond à ma curiosité et mon envie d'apprendre.
-              <strong> En quelques mois, j'ai acquis des bases solides en front-end</strong> et développé
+              <strong> En quelques mois, j’ai acquis des bases solides en front-end et je me forme actuellement au développement back-end.</strong> et développé
               plusieurs projets concrets, scolaires comme personnels. Je cherche une alternance pour
               progresser dans un environnement technique stimulant.
             </p>
