@@ -20,7 +20,7 @@ export default function ContactSection() {
       .then(() => {
         setSuccess(true);
         form.reset();
-        alert("OK CA MARCHE");
+        alert("Message envoyé ✅");
       })
       .catch((error) => {
         alert(`Erreur 😢 ${error?.text || "Regarde la console"}`);

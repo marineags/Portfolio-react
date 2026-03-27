@@ -6,6 +6,9 @@ import ContributionsLikeGitHub from "./components/GitHubHeatmap";
 import BandScene from "./components/BandScene";
 import ContactSection from "./components/ContactSection.tsx";
 import marinePng from "./assets/profil/marine.png";
+import Cv from "./components/Cv";
+
+
 
 const translations = {
   fr: {
@@ -47,6 +50,7 @@ const translations = {
 type Lang = keyof typeof translations;
 
 export default function App() {
+  const [showCv, setShowCv] = useState(false);
   const [lang, setLang] = useState<Lang>("fr");
   const t = useMemo(() => translations[lang], [lang]);
 
@@ -100,11 +104,14 @@ export default function App() {
 
             {/* CV bouton sur mobile (parce que le floating peut gêner/être masqué) */}
             <div className="pointer-events-auto sm:hidden">
-              <a href="/Marine-Agasse-CV.pdf" target="_blank" rel="noreferrer">
-                <button className="w-fit px-5 py-3 rounded-full bg-white/10 text-gray-200 font-semibold backdrop-blur hover:bg-white/15 transition border border-white/10">
-                  CV
-                </button>
-              </a>
+              
+           <button
+  onClick={() => setShowCv(true)}
+  className="w-fit px-5 py-3 rounded-full bg-white/10 text-gray-200 font-semibold backdrop-blur hover:bg-white/15 transition border border-white/10"
+>
+  CV
+</button>
+              
             </div>
           </div>
         </div>
@@ -122,21 +129,17 @@ export default function App() {
 
             <div className="h-[260px] w-full bg-white/20 rounded-md overflow-hidden">
               {/* Note: pour un vrai aperçu, utilise une image (png/jpg) exportée de ton CV */}
-              <img
-                src="/cv-marine-agasse.pdf"
-                alt={t.cvPreviewAlt}
-                draggable="false"
-                className="w-full h-full object-cover pointer-events-none select-none"
-              />
+            <p className="text-white/70 text-sm">{t.cvLabel}</p>
             </div>
           </div>
 
           {/* Bouton CV */}
-          <a href="/cv-marine-agasse.pdf" target="_blank" rel="noreferrer">
-            <button className="px-5 py-3 rounded-full bg-white/15 text-gray-200 hover:bg-[#CCD5AE]/25 transition">
-              CV
-            </button>
-          </a>
+         <button
+  onClick={() => setShowCv(true)}
+  className="px-5 py-3 rounded-full bg-white/15 text-gray-200 hover:bg-[#CCD5AE]/25 transition"
+>
+  CV
+</button>
         </div>
 
         {/* Transition floue */}
@@ -357,9 +360,25 @@ export default function App() {
 
         {/* Footer */}
         <footer className="mt-10 border-t border-white/10 py-6 text-center text-[#FD6E8B]/30 text-sm">
-          © {new Date().getFullYear()} Marine Agasse
-        </footer>
-      </section>
+  © {new Date().getFullYear()} Marine Agasse
+</footer>
+
+{showCv && (
+  <div className="fixed inset-0 z-50 bg-black/80 flex items-center justify-center">
+    <div className="relative w-full max-w-4xl max-h-[90vh] overflow-y-auto bg-black rounded-2xl p-6">
+      <button
+        onClick={() => setShowCv(false)}
+        className="absolute top-4 right-4 text-white text-xl"
+      >
+        ✕
+      </button>
+
+      <Cv />
     </div>
-  );
+  </div>
+)}
+
+</section>
+</div>
+);
 }
