@@ -58,7 +58,7 @@ export default function MobilePortfolio({
             </a>
 
           <a
-  href="public/marine-agasse-3.pdf"
+  href="/marine-agasse-3.pdf"
   target="_blank"
   rel="noreferrer"
   className="w-full px-5 py-3 rounded-full bg-white/10 text-gray-200 font-semibold backdrop-blur border border-white/10 hover:bg-white/15 transition text-center block"

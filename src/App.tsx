@@ -52,6 +52,19 @@ export default function App() {
   const [showCv, setShowCv] = useState(false);
   const [lang, setLang] = useState<Lang>("fr");
   const t = useMemo(() => translations[lang], [lang]);
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 640);
+
+  useEffect(() => {
+  const handleResize = () => {
+    setIsMobile(window.innerWidth < 640);
+  };
+
+  window.addEventListener("resize", handleResize);
+
+  return () => {
+    window.removeEventListener("resize", handleResize);
+  };
+}, []); 
 
   useEffect(() => {
     document.body.style.overflow = showCv ? "hidden" : "auto";
@@ -61,17 +74,14 @@ export default function App() {
     };
   }, [showCv]);
 
-return (
-<>
-  {/* VERSION MOBILE */}
+return isMobile ? (
   <MobilePortfolio t={t} showCv={showCv} setShowCv={setShowCv} />
-
-  {/* VERSION DESKTOP */}
-  <div className="hidden sm:block bg-black text-white">
+) : (
+  <div className="bg-black text-white">
     <Header lang={lang} setLang={setLang} />
 
-      {/* HOME -------------------------------------------------- */}
-      <section id="home" className="relative min-h-screen overflow-hidden">
+    {/* HOME -------------------------------------------------- */}
+    <section id="home" className="relative min-h-screen overflow-hidden">
 
   {/* ===== BACKGROUND ===== */}
 
@@ -114,16 +124,7 @@ return (
           {t.bioBtn}
         </button>
       </a>
-
-      {/* ===== CV MOBILE ===== */}
-     <a
-  href="public/marine-agasse-3.pdf"
-  target="_blank"
-  rel="noreferrer"
-  className="pointer-events-auto sm:hidden w-fit px-5 py-3 rounded-full bg-white/10 text-gray-200 font-semibold backdrop-blur border border-white/10 hover:bg-white/15 transition"
->
-  CV
-</a>
+     
 
     </div>
   </div>
@@ -385,6 +386,5 @@ return (
         </div>
       )}
     </div>
-  </>
   );
 }
