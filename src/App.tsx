@@ -18,7 +18,7 @@ const translations = {
     githubProjectsTitle: "Mes projets GitHub",
     contactTitle: "Contact",
     teammateLabel: "Coéquipier",
-    teammateName: "Assistant IA (ChatGPT)",
+    teammateName: "Assistant IA (Claude)",
     teammateDesc:
       "Outil que j’utilise pour explorer des solutions, itérer rapidement et approfondir ma compréhension du code.",
     cvLabel: "Curriculum vitae",
