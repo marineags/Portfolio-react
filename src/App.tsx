@@ -4,11 +4,9 @@ import RepoCard from "./components/RepoCard";
 import Header from "./components/Header";
 import ContributionsLikeGitHub from "./components/GitHubHeatmap";
 import BandScene from "./components/BandScene";
-import ContactSection from "./components/ContactSection.tsx";
+import ContactSection from "./components/ContactSection";
 import marinePng from "./assets/profil/marine.png";
 import Cv from "./components/Cv";
-
-
 
 const translations = {
   fr: {
@@ -55,16 +53,12 @@ export default function App() {
   const t = useMemo(() => translations[lang], [lang]);
 
   useEffect(() => {
-  if (showCv) {
-    document.body.style.overflow = "hidden";
-  } else {
-    document.body.style.overflow = "auto";
-  }
+    document.body.style.overflow = showCv ? "hidden" : "auto";
 
-  return () => {
-    document.body.style.overflow = "auto";
-  };
-}, [showCv]);
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  }, [showCv]);
 
   return (
     <div className="bg-black text-white">
@@ -77,18 +71,15 @@ export default function App() {
           <BandScene />
         </div>
 
-        {/* Mobile fallback: fond harmonieux */}
+        {/* Mobile fallback */}
         <div className="absolute inset-0 z-0 sm:hidden bg-black" />
 
-        {/* Overlay sombre (ne bloque pas la souris) */}
+        {/* Overlay sombre */}
         <div className="absolute inset-0 z-10 bg-black/50 pointer-events-none" />
 
-        {/* Contenu
-            Desktop = identique (p-20, texte très grand)
-            Mobile = layout harmonieux (centré, padding plus petit)
-        */}
+        {/* Contenu hero */}
         <div className="relative z-20 min-h-screen pointer-events-none flex items-center sm:items-start px-6 py-24 sm:p-20">
-          <div className="w-full sm:w-auto text-white flex flex-col gap-6 sm:pt-45">
+          <div className="w-full sm:w-auto text-white flex flex-col gap-6 sm:pt-[11.25rem]">
             <h1 className="font-['Audiowide'] leading-none text-5xl sm:text-8xl">
               M
               <span className="text-[#FD6E8B] drop-shadow-[0_0_10px_#FD9BAE]">
@@ -107,54 +98,50 @@ export default function App() {
 
             <p className="text-base sm:text-lg opacity-90">{t.juniorDev}</p>
 
-            {/* Bio -> cliquable */}
+            {/* Bouton Bio */}
             <a href="#about" className="pointer-events-auto w-fit">
               <button className="w-fit px-5 py-3 rounded-full bg-white/15 text-gray-200 font-semibold backdrop-blur hover:bg-[#FD6E8B]/25 transition">
                 {t.bioBtn}
               </button>
             </a>
 
-            {/* CV bouton sur mobile (parce que le floating peut gêner/être masqué) */}
+            {/* CV sur mobile uniquement */}
             <div className="pointer-events-auto sm:hidden">
-              
-           <button
-  onClick={() => setShowCv(true)}
-  className="w-fit px-5 py-3 rounded-full bg-white/10 text-gray-200 font-semibold backdrop-blur hover:bg-white/15 transition border border-white/10"
->
-  CV
-</button>
-              
+              <button
+                onClick={() => setShowCv(true)}
+                className="w-fit px-5 py-3 rounded-full bg-white/10 text-gray-200 font-semibold backdrop-blur hover:bg-white/15 transition border border-white/10"
+              >
+                CV
+              </button>
             </div>
           </div>
         </div>
 
-        {/* CV (floating) — Desktop uniquement */}
+        {/* CV floating desktop uniquement */}
         <div className="hidden sm:block fixed bottom-14 right-20 z-50 group pointer-events-auto">
-          {/* Aperçu au hover */}
+          {/* Preview au hover */}
           <div
- className="absolute bottom-14 right-0 w-fit h-fit rounded-2xl bg-white/20 backdrop-blur-md px-4 py-2
-opacity-0 translate-y-2 scale-95 transition-all duration-200
-"
->
-            <p className="text-white text-sm mb-3">{t.cvLabel}</p>
-
-            
+            className="absolute bottom-14 right-0 rounded-2xl bg-white/20 backdrop-blur-md px-4 py-2
+            opacity-0 translate-y-2 scale-95 transition-all duration-200
+            group-hover:opacity-100 group-hover:translate-y-0 group-hover:scale-100"
+          >
+            <p className="text-white text-sm whitespace-nowrap">{t.cvLabel}</p>
           </div>
 
-          {/* Bouton CV */}
-         <button
-  onClick={() => setShowCv(true)}
-  className="px-5 py-3 rounded-full bg-white/15 text-gray-200 hover:bg-[#FD6E8B]/25 transition"
->
-  CV
-</button>
+          {/* Bouton desktop */}
+          <button
+            onClick={() => setShowCv(true)}
+            className="px-5 py-3 rounded-full bg-white/15 text-gray-200 font-semibold backdrop-blur hover:bg-[#FD6E8B]/25 transition"
+          >
+            CV
+          </button>
         </div>
 
         {/* Transition floue */}
         <div className="absolute bottom-0 left-0 w-full h-20 bg-gradient-to-b from-transparent to-black pointer-events-none z-20" />
       </section>
 
-      {/* BIO ------------------------------------------------------ */}
+      {/* ABOUT ------------------------------------------------------ */}
       <section id="about" className="min-h-screen px-6 py-20 sm:px-20 sm:py-28">
         <h2 className="text-3xl sm:text-4xl font-bold mb-10 sm:mb-14 text-white">
           {t.aboutTitle}
@@ -166,15 +153,15 @@ opacity-0 translate-y-2 scale-95 transition-all duration-200
             <img
               src={marinePng}
               alt={t.profileAlt}
-              className="h-90 sm:h-97 w-full object-cover rounded-2xl"
+              className="h-[22.5rem] sm:h-[24.25rem] w-full object-cover rounded-2xl"
             />
           </div>
 
           {/* Colonne droite */}
           <div className="grid grid-rows-[auto_auto] gap-8 sm:gap-10">
-            {/* Texte long */}
+            {/* Texte */}
             <div className="bg-white/5 border border-white/10 rounded-2xl p-6 sm:p-8 backdrop-blur-md shadow-xl">
-              <p className="text-[#FFFFFF] leading-relaxed text-base sm:text-lg">
+              <p className="text-white leading-relaxed text-base sm:text-lg">
                 {t.aboutText}
               </p>
             </div>
@@ -240,8 +227,7 @@ opacity-0 translate-y-2 scale-95 transition-all duration-200
           {t.projectsTitle}
         </h2>
 
-        {/* Repos (un peu plus large sur mobile) */}
-        <div className="rounded-2xl bg-black/70 backdrop-blur-xl border border-white/10 shadow-xl p-2 sm: mb-7">
+        <div className="rounded-2xl bg-black/70 backdrop-blur-xl border border-white/10 shadow-xl p-4 mb-7">
           <h3 className="text-lg sm:text-xl font-semibold text-[#FD6E8B] mb-2">
             {t.githubProjectsTitle}
           </h3>
@@ -261,13 +247,11 @@ opacity-0 translate-y-2 scale-95 transition-all duration-200
           </div>
         </div>
 
-        {/* Calendrier GitHub : élargi + swipe au doigt + scrollbar cachée */}
-        <div className="rounded-2xl bg-black/70 backdrop-blur-xl border border-white/10 shadow-xl p-4 ">
+        <div className="rounded-2xl bg-black/70 backdrop-blur-xl border border-white/10 shadow-xl p-4">
           <div
             className="overflow-x-auto overflow-y-hidden touch-pan-x scroll-smooth no-scrollbar"
             style={{ WebkitOverflowScrolling: "touch" }}
           >
-            {/* min-width force le swipe sur mobile, mais desktop reste normal */}
             <div className="min-w-[760px] md:min-w-0">
               <ContributionsLikeGitHub username="marineags" />
             </div>
@@ -278,18 +262,16 @@ opacity-0 translate-y-2 scale-95 transition-all duration-200
       {/* CONTACT --------------------------------------------------------------- */}
       <section
         id="contact"
-        className="relative h-[100svh] overflow-hidden px-6 py-16 sm:px-20 sm:py-20 flex flex-col"
+        className="relative min-h-screen px-6 py-16 sm:px-20 sm:py-20 flex flex-col"
       >
         <h2 className="text-3xl sm:text-4xl font-bold text-white mb-10">
           {t.contactTitle}
         </h2>
 
-        {/* Zone principale (prend l’espace restant) */}
         <div className="flex-1 min-h-0">
           <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 h-full">
-            {/* ===== GAUCHE : 4 cartes 2x2 ===== */}
+            {/* Cartes */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 content-start">
-              {/* LinkedIn */}
               <a
                 href="https://www.linkedin.com/in/marine-agasse-346886292/"
                 target="_blank"
@@ -308,7 +290,6 @@ opacity-0 translate-y-2 scale-95 transition-all duration-200
                 </div>
               </a>
 
-              {/* GitHub */}
               <a
                 href="https://github.com/marineags"
                 target="_blank"
@@ -327,7 +308,6 @@ opacity-0 translate-y-2 scale-95 transition-all duration-200
                 </div>
               </a>
 
-              {/* Email */}
               <a href="mailto:agsmarine23@gmail.com" className="group">
                 <div className="shadow-xl rounded-xl p-6 sm:p-8 w-full flex flex-col items-center justify-center bg-white/5 border border-white/10 hover:bg-white/10 transition">
                   <img
@@ -335,13 +315,12 @@ opacity-0 translate-y-2 scale-95 transition-all duration-200
                     alt="Email"
                     className="h-12 mb-4"
                   />
-                  <p className="text-sm text-[#FDAFBF] italic group-hover:text-white transition">
+                  <p className="text-sm text-[#FDAFBF] italic group-hover:text-white transition break-all text-center">
                     agsmarine23@gmail.com
                   </p>
                 </div>
               </a>
 
-              {/* Téléphone */}
               <a href="tel:+33638829826" className="group">
                 <div className="shadow-xl rounded-xl p-6 sm:p-8 w-full flex flex-col items-center justify-center bg-white/5 border border-white/10 hover:bg-white/10 transition">
                   <img
@@ -356,9 +335,8 @@ opacity-0 translate-y-2 scale-95 transition-all duration-200
               </a>
             </div>
 
-            {/* =====Formulaire ===== */}
+            {/* Formulaire */}
             <div className="flex lg:justify-end">
-              {/* Largeur alignée avec l’esthétique des cartes */}
               <div className="w-full max-w-xl">
                 <ContactSection />
               </div>
@@ -366,27 +344,26 @@ opacity-0 translate-y-2 scale-95 transition-all duration-200
           </div>
         </div>
 
-        {/* Footer */}
         <footer className="mt-10 border-t border-white/10 py-6 text-center text-[#FD6E8B]/30 text-sm">
-  © {new Date().getFullYear()} Marine Agasse
-</footer>
+          © {new Date().getFullYear()} Marine Agasse
+        </footer>
+      </section>
 
-{showCv && (
-  <div className="fixed inset-0 z-[100] bg-black/70 backdrop-blur-sm">
-    <button
-      onClick={() => setShowCv(false)}
-      className="fixed top-4 right-4 z-[110] rounded-full bg-white text-black w-10 h-10 flex items-center justify-center shadow-lg"
-    >
-      ✕
-    </button>
+      {/* MODAL CV --------------------------------------------------------------- */}
+      {showCv && (
+        <div className="fixed inset-0 z-[100] bg-black/70 backdrop-blur-sm">
+          <button
+            onClick={() => setShowCv(false)}
+            className="fixed top-4 right-4 z-[110] rounded-full bg-white text-black w-10 h-10 flex items-center justify-center shadow-lg"
+          >
+            ✕
+          </button>
 
-    <div className="h-screen overflow-y-auto flex justify-center p-4">
-      <Cv />
+          <div className="h-screen overflow-y-auto flex justify-center p-4">
+            <Cv />
+          </div>
+        </div>
+      )}
     </div>
-  </div>
-)}
-
-</section>
-</div>
-);
+  );
 }
