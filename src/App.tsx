@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useMemo, useState, useEffect } from "react";
 import projects from "./data/projects.json";
 import RepoCard from "./components/RepoCard";
 import Header from "./components/Header";
@@ -53,6 +53,18 @@ export default function App() {
   const [showCv, setShowCv] = useState(false);
   const [lang, setLang] = useState<Lang>("fr");
   const t = useMemo(() => translations[lang], [lang]);
+
+  useEffect(() => {
+  if (showCv) {
+    document.body.style.overflow = "hidden";
+  } else {
+    document.body.style.overflow = "auto";
+  }
+
+  return () => {
+    document.body.style.overflow = "auto";
+  };
+}, [showCv]);
 
   return (
     <div className="bg-black text-white">
@@ -120,23 +132,19 @@ export default function App() {
         <div className="hidden sm:block fixed bottom-14 right-20 z-50 group pointer-events-auto">
           {/* Aperçu au hover */}
           <div
-            className="absolute bottom-14 right-0 w-72 h-80 rounded-2xl bg-white/20 backdrop-blur-md p-4
-            opacity-0 translate-y-2 scale-95 transition-all duration-200
-            group-hover:opacity-35 group-hover:translate-y-0 group-hover:scale-100
-            pointer-events-none shadow-xl overflow-hidden"
-          >
+ className="absolute bottom-14 right-0 w-fit h-fit rounded-2xl bg-white/20 backdrop-blur-md px-4 py-2
+opacity-0 translate-y-2 scale-95 transition-all duration-200
+"
+>
             <p className="text-white text-sm mb-3">{t.cvLabel}</p>
 
-            <div className="h-[260px] w-full bg-white/20 rounded-md overflow-hidden">
-              {/* Note: pour un vrai aperçu, utilise une image (png/jpg) exportée de ton CV */}
-            <p className="text-white/70 text-sm">{t.cvLabel}</p>
-            </div>
+            
           </div>
 
           {/* Bouton CV */}
          <button
   onClick={() => setShowCv(true)}
-  className="px-5 py-3 rounded-full bg-white/15 text-gray-200 hover:bg-[#CCD5AE]/25 transition"
+  className="px-5 py-3 rounded-full bg-white/15 text-gray-200 hover:bg-[#FD6E8B]/25 transition"
 >
   CV
 </button>
@@ -364,15 +372,15 @@ export default function App() {
 </footer>
 
 {showCv && (
-  <div className="fixed inset-0 z-50 bg-black/80 flex items-center justify-center">
-    <div className="relative w-full max-w-4xl max-h-[90vh] overflow-y-auto bg-black rounded-2xl p-6">
-      <button
-        onClick={() => setShowCv(false)}
-        className="absolute top-4 right-4 text-white text-xl"
-      >
-        ✕
-      </button>
+  <div className="fixed inset-0 z-[100] bg-black/70 backdrop-blur-sm">
+    <button
+      onClick={() => setShowCv(false)}
+      className="fixed top-4 right-4 z-[110] rounded-full bg-white text-black w-10 h-10 flex items-center justify-center shadow-lg"
+    >
+      ✕
+    </button>
 
+    <div className="h-screen overflow-y-auto flex justify-center p-4">
       <Cv />
     </div>
   </div>

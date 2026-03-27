@@ -6,12 +6,6 @@
     "url": "https://github.com/marineags/Quizz"
   },
   {
-    "name": "Guess-a-number",
-    "description": "Jeu de devinette en JS",
-    "language": "JavaScript",
-    "url": "https://github.com/marineags/Guess-a-number"
-  },
-  {
     "name": "Portfolio",
     "description": "Portfolio React + Tailwind",
     "language": "TypeScript",
