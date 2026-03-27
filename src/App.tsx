@@ -66,80 +66,94 @@ export default function App() {
 
       {/* HOME -------------------------------------------------- */}
       <section id="home" className="relative min-h-screen overflow-hidden">
-        {/* Desktop: 3D en fond | Mobile: pas de 3D */}
-        <div className="absolute inset-0 z-0 hidden sm:block">
-          <BandScene />
-        </div>
 
-        {/* Mobile fallback */}
-        <div className="absolute inset-0 z-0 sm:hidden bg-black" />
+  {/* ===== BACKGROUND ===== */}
 
-        {/* Overlay sombre */}
-        <div className="absolute inset-0 z-10 bg-black/50 pointer-events-none" />
+  {/* Desktop 3D */}
+  <div className="absolute inset-0 z-0 hidden sm:block">
+    <BandScene />
+  </div>
 
-        {/* Contenu hero */}
-        <div className="relative z-20 min-h-screen pointer-events-none flex items-center sm:items-start px-6 py-24 sm:p-20">
-          <div className="w-full sm:w-auto text-white flex flex-col gap-6 sm:pt-[11.25rem]">
-            <h1 className="font-['Audiowide'] leading-none text-5xl sm:text-8xl">
-              M
-              <span className="text-[#FD6E8B] drop-shadow-[0_0_10px_#FD9BAE]">
-                a
-              </span>
-              rine{" "}
-              <span className="text-[#FD6E8B] drop-shadow-[0_0_10px_#FD9BAE]">
-                A
-              </span>
-              g
-              <span className="text-[#FD6E8B] drop-shadow-[0_0_10px_#FD9BAE]">
-                a
-              </span>
-              sse
-            </h1>
+  {/* Mobile fallback */}
+  <div className="absolute inset-0 z-0 sm:hidden bg-black" />
 
-            <p className="text-base sm:text-lg opacity-90">{t.juniorDev}</p>
+  {/* Overlay sombre */}
+  <div className="absolute inset-0 z-10 bg-black/50 pointer-events-none" />
 
-            {/* Bouton Bio */}
-            <a href="#about" className="pointer-events-auto w-fit">
-              <button className="w-fit px-5 py-3 rounded-full bg-white/15 text-gray-200 font-semibold backdrop-blur hover:bg-[#FD6E8B]/25 transition">
-                {t.bioBtn}
-              </button>
-            </a>
 
-            {/* CV sur mobile uniquement */}
-            <div className="pointer-events-auto sm:hidden">
-              <button
-                onClick={() => setShowCv(true)}
-                className="w-fit px-5 py-3 rounded-full bg-white/10 text-gray-200 font-semibold backdrop-blur hover:bg-white/15 transition border border-white/10"
-              >
-                CV
-              </button>
-            </div>
-          </div>
-        </div>
+  {/* ===== HERO CONTENT ===== */}
 
-        {/* CV floating desktop uniquement */}
-        <div className="hidden sm:block fixed bottom-14 right-20 z-50 group pointer-events-auto">
-          {/* Preview au hover */}
-          <div
-            className="absolute bottom-14 right-0 rounded-2xl bg-white/20 backdrop-blur-md px-4 py-2
-            opacity-0 translate-y-2 scale-95 transition-all duration-200
-            group-hover:opacity-100 group-hover:translate-y-0 group-hover:scale-100"
-          >
-            <p className="text-white text-sm whitespace-nowrap">{t.cvLabel}</p>
-          </div>
+  <div className="relative z-20 min-h-screen flex items-center sm:items-start px-6 py-24 sm:p-20 pointer-events-none">
+    <div className="w-full sm:w-auto text-white flex flex-col gap-6 sm:pt-[11.25rem]">
 
-          {/* Bouton desktop */}
-          <button
-            onClick={() => setShowCv(true)}
-            className="px-5 py-3 rounded-full bg-white/15 text-gray-200 font-semibold backdrop-blur hover:bg-[#FD6E8B]/25 transition"
-          >
-            CV
-          </button>
-        </div>
+      {/* Nom */}
+      <h1 className="font-['Audiowide'] leading-none text-5xl sm:text-8xl">
+        M
+        <span className="text-[#FD6E8B] drop-shadow-[0_0_10px_#FD9BAE]">a</span>
+        rine{" "}
+        <span className="text-[#FD6E8B] drop-shadow-[0_0_10px_#FD9BAE]">A</span>
+        g
+        <span className="text-[#FD6E8B] drop-shadow-[0_0_10px_#FD9BAE]">a</span>
+        sse
+      </h1>
 
-        {/* Transition floue */}
-        <div className="absolute bottom-0 left-0 w-full h-20 bg-gradient-to-b from-transparent to-black pointer-events-none z-20" />
-      </section>
+      {/* Job */}
+      <p className="text-base sm:text-lg opacity-90">
+        {t.juniorDev}
+      </p>
+
+      {/* Bouton Bio */}
+      <a href="#about" className="pointer-events-auto w-fit">
+        <button className="px-5 py-3 rounded-full bg-white/15 text-gray-200 font-semibold backdrop-blur hover:bg-[#FD6E8B]/25 transition">
+          {t.bioBtn}
+        </button>
+      </a>
+
+      {/* ===== CV MOBILE ===== */}
+      <a
+        href="src/assets/Marine Agasse-3.pdf"
+        target="_blank"
+        rel="noreferrer"
+        className="pointer-events-auto sm:hidden w-fit px-5 py-3 rounded-full bg-white/10 text-gray-200 font-semibold backdrop-blur border border-white/10 hover:bg-white/15 transition"
+      >
+        CV
+      </a>
+
+    </div>
+  </div>
+
+
+  {/* ===== CV DESKTOP FLOATING ===== */}
+
+  <div className="hidden sm:block fixed bottom-14 right-20 z-50 group pointer-events-auto">
+
+    {/* Tooltip */}
+    <div
+      className="absolute bottom-14 right-0 rounded-2xl bg-white/20 backdrop-blur-md px-4 py-2
+                 opacity-0 translate-y-2 scale-95 transition-all duration-200
+                 group-hover:opacity-100 group-hover:translate-y-0 group-hover:scale-100"
+    >
+      <p className="text-white text-sm whitespace-nowrap">
+        {t.cvLabel}
+      </p>
+    </div>
+
+    {/* Bouton */}
+    <button
+      onClick={() => setShowCv(true)}
+      className="px-5 py-3 rounded-full bg-white/15 text-gray-200 font-semibold backdrop-blur border border-white/10 hover:bg-[#FD6E8B]/25 transition"
+    >
+      CV
+    </button>
+
+  </div>
+
+
+  {/* ===== GRADIENT BAS ===== */}
+
+  <div className="absolute bottom-0 left-0 w-full h-20 bg-gradient-to-b from-transparent to-black pointer-events-none z-20" />
+
+</section>
 
       {/* ABOUT ------------------------------------------------------ */}
       <section id="about" className="min-h-screen px-6 py-20 sm:px-20 sm:py-28">
